@@ -1,37 +1,60 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<style type="text/css">
+	body{
+		font-family: 'Quattrocento Sans', sans-serif;
+		background: url('static/background.jpg');
+		/*background-position: 50px 100px;*/
+	}
+	.heading{
+		justify-content: center;
+		background-color: none;	/*BCABAE*/
+		box-shadow: 1px 2px 3px white;
+		border-bottom:2px solid #716969; 
+		padding-top:2%;
+		color: #402A2C;
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+	}
+	.signup{
+		float: right;
+		 top: 0;
+		 padding-bottom: 4%;
+	}
+	.card {
+        margin: 0 auto; 
+        float: none; 
+        margin-bottom: 10px;
+        margin-top:30%;
+        width:80%;
+        border-radius: 10px; 
+	}
+
+	@media (min-width : 700px){
+		.card{
+			margin-top: 10%;
+		}
+	}
+</style>
+
+<body>
+	<div class="container-fluid">
+		<div class="row heading">
+			<div class="col">
+				<h3>OMW</h3>
+			</div>
+			<div class="col align-self-end" style="float: right;">
+				<!-- <a href="#" class="signup">SignUp</a> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="card text-center">
+  <h5 class="card-header">Welcome aboard!</h5>
+  <div class="card-body">
+    <input type="text" class="form-control" placeholder="Phone number" aria-label="Recipient's username" aria-describedby="button-addon3">
+    <br>
+    <a href="#" class="btn btn-primary btn-lg">Login</a>
   </div>
-</nav>
+</div>
+</div>
+</div>
