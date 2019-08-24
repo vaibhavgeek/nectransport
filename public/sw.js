@@ -1,7 +1,6 @@
 // CODELAB: Update cache names any time any of the cached files change.
 var CACHE_NAME = 'my-site-cache-v1';
 const FILES_TO_CACHE = [
-  '/',
   '/offline.html',
 ];
 
