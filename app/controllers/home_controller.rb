@@ -12,6 +12,8 @@ class HomeController < ApplicationController
   end
 
   def chat
+    @messages = Message.all
+    @message = Message.new
   end
 
   def notify

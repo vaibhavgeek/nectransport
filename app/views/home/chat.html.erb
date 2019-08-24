@@ -1,2 +1,17 @@
+
+
 <h1>Home#chat</h1>
 <p>Find me in app/views/home/chat.html.erb</p>
+
+<div id="messages"> 
+	<% @messages.each do |msg| %>
+	<%= msg.content %> <br/><br/>
+	<% end %>
+</div>
+
+
+<%= form_for @message, remote:true do |f| %>
+
+<%= f.text_field :content %>
+<%= f.submit "send" %> 
+<% end %>
