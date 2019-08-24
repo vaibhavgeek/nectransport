@@ -1,7 +1,8 @@
 <style type="text/css">
 	body{
 		font-family: 'Quattrocento Sans', sans-serif;
-		background: url('static/background.jpg');
+		background: url('backg.jpg');
+		background-size: 320px 600px; 
 		/*background-position: 50px 100px;*/
 	}
 	.heading{
@@ -10,6 +11,7 @@
 		box-shadow: 1px 2px 3px white;
 		border-bottom:2px solid #716969; 
 		padding-top:2%;
+		font-weight: bold;
 		color: #402A2C;
 
 	}
@@ -24,7 +26,8 @@
         margin-bottom: 10px;
         margin-top:30%;
         width:80%;
-        border-radius: 10px; 
+        border-radius: 10px;
+        /*opacity: 0.5; */
 	}
 
 	@media (min-width : 700px){
@@ -51,10 +54,24 @@
 			<div class="card text-center">
   <h5 class="card-header">Welcome aboard!</h5>
   <div class="card-body">
-    <input type="text" class="form-control" placeholder="Phone number" aria-label="Recipient's username" aria-describedby="button-addon3">
+    <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon3">
+    <br>
+    <input type="password" class="form-control" placeholder="Password" aria-label="Recipient's password" aria-describedby="button-addon3">
     <br>
     <a href="#" class="btn btn-primary btn-lg">Login</a>
+    <a href="#" class="btn btn-primary btn-lg">SignUp</a>
+    <br>
+  </div>
+  </div>
+  <br>
+  <div class="container">
+  	<div class="row">
+  		<div class="card text-center" style="margin-top: 0; background: transparent;">
+  <a href="#" class="btn btn-secondary btn-md">Signup with google</a>
+  <!-- <br> -->
+  <a href="#" class="btn btn-secondary btn-md">Signup with facebook</a>
   </div>
 </div>
+  </div>
 </div>
 </div>
