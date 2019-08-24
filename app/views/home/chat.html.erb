@@ -1,17 +1,575 @@
+<style type="text/css">
+    
+body{
+  background: rgb(255,255,255);
+  margin:0;
+  padding: 0;
+}
+.box {
+  position: relative;
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.top-bar {
+  position: fixed;
+  padding: 4%;
+  margin: auto;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 10%;
+  top: -5%;
+  left: 0;
+  background: #4500C5;
+  box-shadow: 1px 1px 10px #CDCDCD;
+  font-size: 120%;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 10px  black;
+  font-family: 'Roboto', sans-serif; 
+  z-index: 1;
+}
+.wrapper{
+  display: inline-block;
+  background: #4500C5;
+  color: white;
+  float: right;
+  border: none;
+  transition-duration: 0.3s;
+}
+
+.hide-button:hover{
+  color: #CDCDCD;
+}
+.hide-button:active{
+  border: none;
+}
+
+.modal-header {
+  background:#4500C5; 
+  color:white; 
+}
+.sender {
+  position: absolute;
+  margin: auto;
+  display: block;
+  width: 20%;
+  height: 80%;
+  top: 10%;
+  left: 2%;
+  background: white;
+  border-radius: 0 15px;
+}
+.bottom-bar {
+  position: fixed;
+  margin:auto;
+  display: block;
+  width: 100%;
+  height: 10%;
+  bottom: 0;
+  left: 0;
+  background: #4500C5;
+}
+
+.fa-microphone {
+  color: white;
+}
+.fa-microphone:hover{
+  color: #a887e5;
+}
+.fa-microphone:active { 
+    color: white;
+}
+.fa-telegram {
+  color: white;
+}
+.fa-telegram:hover{
+  color: #a887e5;
+}
+.fa-telegram:active { 
+    color: white;
+}
+
+.rec{
+  position: relative;
+  margin: auto;
+  float: left;
+  display: block;
+  top: 35%;
+  left: 2%;
+  background: none;
+  border:none;
+  transform: scale(1.5);
+  margin-right: 0px;
+
+  /*Delete this to show*/
+  display: none;
+
+}
+
+.send {
+  position: relative;
+  margin: auto;
+  float: right;
+  display: block;
+  top: 35%;
+  right: 4%;
+  background: none;
+  border:none;
+  transform: scale(1.5);
+  margin-left: 0px;
+}
+.input {
+  position: absolute;
+  margin: auto;
+  display: block;
+  width: 75%;
+  height: 60%;
+  top: 20%;
+  left: 9%;
+  color: black;
+  margin-right: -20%;
+  border-radius: 0 10px;
+  overflow: hidden;
+  border: none;
+  outline: none !important;
+  resize: none;
+  font-size: 120%;
+}
+
+.name {
+  font-family: "Helvatica", cursive;
+  position: absolute;
+  left: 35%;
+  top: 30%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #520019;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(23, 23, 23, 0.5);
+  font-family: "Open Sans", sans-serif;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(23, 23, 23, 0.5);
+  font-family: "Open Sans", sans-serif;
+}
+.input:focus {
+  color: black;
+  font-family: "Open Sans", sans-serif;
+}
+.messages-content{
+  position: absolute;
+  max-height: 100%;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  width: 100%;
+}
+
+#messages{
+  /*border:1px solid black;*/
+  position: absolute;
+  margin: auto;
+  display: block;
+  width: 97%;
+  height: 77.5%;
+  left: 1%;
+  top: 12.5%;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+
+}
+
+::-webkit-scrollbar-track { 
+    background-color:rgba(255,255,255,0.5);
+    width: 7px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:rgba(255,255,255,1);
+}
+
+.msg{
+  width:100%;
+  height:auto;
+  padding:2px 5px;
+  
+}
+
+.msg-box-send{
+  font-family: "Open Sans", sans-serif;
+  padding:8px 10px;
+  margin: 0px 10px;
+  font-size:120%;
+  background-color:#4500C5;
+  color: white;
+  height: 80%;
+  width: 45%;
+  max-width:70%;
+  font-weight:300;
+  border-radius:10px 10px 0px;
+  display:inline-block;
+}
+
+.msg-box-rec{
+  font-family: "Open Sans", sans-serif;
+  padding:8px 10px;
+  margin: 0px 10px;
+  height: 80%;
+  width: 45%;
+  max-width:70%;
+  font-size:120%;
+  background-color:#CDCDCD;
+  color:black;
+  font-weight:300;
+  border-radius:10px 10px 10px 0px;
+  display:inline-block;
+}
+
+.sent{
+  text-align: right;
+}
+.time{
+  font-size:14px;
+  margin: 0 10px;
+  padding:4px 2px;
+  color:black;
+  letter-spacing:0.5px;
+}
+
+@media (min-height: 800px) {
+  #messages {
+    top:10%;
+    height: 80%;
+  }
+}
+
+@media (max-width: 769px) {
+  .msg-box-send {
+    width: 50%;
+  }
+  .msg-box-rec {
+    width: 50%;
+  }
+  .send{
+    transform: translateX(-10px);
+    transform: scale(1.5);
+  }
+  .top-bar{
+    top:-1.2%;
+    padding: 12%;
+  }
+  #messages{
+    padding-top: 4%;
+  }
+}
+
+@media (max-width: 384px) {
+  .input {
+    width:73%;
+    height: 50%;
+  }
+  .top-bar{
+    top:-1%;
+    padding: 12%;
+  }
+}
+
+@media (max-width: 320px){
+  .input {
+    width: 68%;
+  }
+  .send{
+    top :26%;
+  }
+  .top-bar{
+    top:-4%;
+    padding: 15%;
+  }
+}
+
+@media (min-width: 700px){
+  .send{
+    transform: scale(1.9);
+  }
+  .input{
+    width: 78%;
+  }
+}
+
+@media (min-height: 700px){
+  .time{
+    font-size: 18px;
+  }
+  .msg-box-rec{
+    font-size: 25px; 
+  }
+  .msg-box-send{
+      font-size: 25px;
+  }
+}
+
+@media (min-height: 900px){
+  .send {
+    transform: scale(2);
+  }
+  #messages {
+    top:14%;
+    height: 76%;
+  }
+}
+
+@media (min-height: 1000px) {
+  .msg-box-send{
+    height:90%;
+    font-size: 25px;
+  }
+  .msg-box-rec{
+    height:90%;
+    font-size: 25px;
+  }
+  .input{
+    font-size: 25px;
+  }
+}
+@media (min-width: 570px) {
+  .send { 
+    left: -6%;
+   }
+   .time{
+    font-size: 20px;
+   }
+}
+  </style>
+<!-- jQuery -->
 
 
-<h1>Home#chat</h1>
-<p>Find me in app/views/home/chat.html.erb</p>
+<!-- Bootstrap 4 (CDN) -->
 
-<div id="messages"> 
-	<% @messages.each do |msg| %>
-	<%= msg.content %> <br/><br/>
-	<% end %>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Rammetto+One" rel="stylesheet">
+
+<div class=" container">
+
+<div class = "top-bar">
+  <div class="btn btn-lg" onclick="document.getElementById('abc').click()">REQ</div>
+  <h2 style="display: inline;">Vaibhav</h2>
+  <div class="wrapper">
+  <a data-toggle="modal" data-target="#myModal" id="abc" class="hide-button"><i class="contact-info fa fa-info-circle fa-2x"></i></a>
+  </div>
+</div>
+
+<!--Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h2 class="modal-title">Awaiting Request..</h2>
+        <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <h4>User is yet to respond to your request</h4>
+      </div>
+    </div>
+  </div>
 </div>
 
 
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h2 class="modal-title">Request user</h2>
+        <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <h4>User is yet to respond to your request</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Messages Section -->
+
+  <div id="messages">
+    <% @messages.each do |msg| %>
+  <%= msg.content %> <br/><br/>
+  <% end %>
+      <div class="messages-content" id = "scrolldown"></div>
+  </div>
+
+<!-- Bottom Bar -->
+  <div class="bottom-bar">
+  
 <%= form_for @message, remote:true do |f| %>
 
-<%= f.text_field :content %>
-<%= f.submit "send" %> 
+<%= f.text_field :content , :id => "message_content" %>
+
+    <button class="rec">
+      <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>  
+    </button>
+<%= f.submit %>  <i class="fa fa-telegram fa-2x" aria-hidden="true"></i> 
 <% end %>
+
+    
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+  var text = document.querySelector('.input');
+var send = document.querySelector('.send');
+var chatbox = document.querySelector('.messages-content');
+var contact = document.querySelector('.contact-info');
+var boxBody = document.getElementById("scrolldown");
+
+
+// DIALOGFLOW CODE
+
+var accessToken = '33779abbf36849c6a22b85155c683711'; //PROJECT TOKEN
+var baseUrl = 'https://api.api.ai/v1/'; //BASE URL (Uses version 1 of dialogflow API.AI)
+
+
+// contact.addEventListener('click',function(){
+//  window.location.href = "http://flowtogether.co/#contact";
+// });
+
+
+send.addEventListener('click', addChat, false);
+$('.input').keypress(function(event) {
+  if (event.keyCode == 13) addChat();
+});
+
+/* --- FOR SPEECH RECOGNITION FURTHER  --- */
+
+// $("#rec").click(function(event) {
+//   switchRecognition();
+// });
+
+function addChat() {
+  var d = new Date();
+  var msg = $('.input').val();
+  if (msg) {
+    var hoursStr = '';
+    var minutesStr = '';
+    var hours = d.getHours();
+    var minutes = d.getMinutes();
+    if (hours < 10) hoursStr += '0' + hours;
+    else hoursStr = hours;
+    if (minutes < 10) minutesStr += '0' + minutes;
+    else minutesStr = minutes;
+
+    chatbox.innerHTML +=
+      "<section class='sent msg'><section class='msg-box-send'>" +
+      msg +
+      "</section><section class='time'>" +
+      hoursStr +
+      ':' +
+      minutesStr +
+      '</section></section>';
+      boxBody.scrollTop =  boxBody.scrollHeight;
+    // $('.chatBox').append('<span class="userInput">' + 'Me:'+ $('input').val() + '</span><br><br>')
+    event.preventDefault();
+    let query = $('.input').val();
+    $('.input').val('');
+    sendQuery(query);
+  }
+}
+
+function sendQuery(query) {
+  var text = query;
+  $.ajax({
+    type: 'POST',
+    url: baseUrl + 'query?v=20180101',
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Bearer ' + accessToken,
+    },
+    data: JSON.stringify({ query: text, lang: 'en-US', sessionId: 'randomsession' }),
+    success: function(responseData) {
+      setResponse(responseData);
+    },
+  });
+}
+
+function setResponse(val) {
+  var hoursStr = '';
+  var minutesStr = '';
+  d = new Date();
+  var hours = d.getHours();
+  var minutes = d.getMinutes();
+  if (hours < 10) hoursStr += '0' + hours;
+  else hoursStr = hours;
+  if (minutes < 10) minutesStr += '0' + minutes;
+  else minutesStr = minutes;
+  chatbox.innerHTML +=
+    "<section class='reci message'><section class='msg-box-rec'>" +
+    val.result.fulfillment.speech +
+    "</section><section class='time'>" +
+    hoursStr +
+    ':' +
+    minutesStr +
+    '</section></section>';
+    boxBody.scrollTop =  boxBody.scrollHeight;
+  document.querySelector('#messages').scrollTo(0, document.querySelector('section:last-child').scrollHeight);
+}
+
+// var recognition;
+// function startRecognition() {
+//   recognition = new webkitSpeechRecognition();
+//   recognition.onstart = function(event) {
+//     updateRec();
+//   };
+//   recognition.onresult = function(event) {
+//     var text = "";
+//       for (var i = event.resultIndex; i < event.results.length; ++i) {
+//         text += event.results[i][0].transcript;
+//       }
+//       setInput(text);
+//     stopRecognition();
+//   };
+//   recognition.onend = function() {
+//     stopRecognition();
+//   };
+//   recognition.lang = "en-US";
+//   recognition.start();
+// }
+
+// function stopRecognition() {
+//   if (recognition) {
+//     recognition.stop();
+//     recognition = null;
+//   }
+//   updateRec();
+// }
+// function switchRecognition() {
+//   if (recognition) {
+//     stopRecognition();
+//   } else {
+//     startRecognition();
+//   }
+// }
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
