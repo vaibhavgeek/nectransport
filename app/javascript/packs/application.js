@@ -7,8 +7,15 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
 import './bootstrap_custom.js'
 import '../stylesheets/application'
+
+$(document).on('turbolinks:load', function() {
+
+	console.log("Chat Application is Ready Spinaxon");
+
+	});
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
