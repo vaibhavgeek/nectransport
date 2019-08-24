@@ -367,11 +367,14 @@ body{
 <div class=" container">
 
 <div class = "top-bar">
-  <div class="btn btn-lg" onclick="document.getElementById('abc').click()">REQ</div>
-  <h2 style="display: inline;">Vaibhav</h2>
-  <div class="wrapper">
-  <a data-toggle="modal" data-target="#myModal" id="abc" class="hide-button"><i class="contact-info fa fa-info-circle fa-2x"></i></a>
+  <!-- <div class="btn btn-lg" onclick="document.getElementById('abc').click()">REQ</div> -->
+  <div>
+    <h3 id="fname" style="display: inline;">Vaibhav</h3>
+    <%= link_to home_notif_path("send")  , method: "post" , :id => "abc" , :class => "hide-button" , :remote => true  do %>
+    <i class="contact-info fa fa-info-circle"></i>
+    <% end %>
   </div>
+  
 </div>
 
 <!--Modal -->
@@ -380,41 +383,53 @@ body{
     <div class="modal-content">
 
       <div class="modal-header">
-        <h2 class="modal-title">Awaiting Request..</h2>
+        <h2 class="modal-title">Be OnMyWay Request..</h2>
+        <div class="wrapper">
+          <%= link_to home_notif_path("reject") , method: "post" , :id => "def" , :class => "hide-button" , :remote => true  do %>
         <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+          <% end %>
+        </div>
       </div>
 
       <div class="modal-body">
-        <h4>User is yet to respond to your request</h4>
+        <div id="myinfo">
+          <h4>User is yet to respond to your request</h4>
+        </div>
+
+        <div id="yourinfo">
+          <h4>This person wants to know more.</h4> </br>
+          
+          <div class="wrapper">
+            <%= link_to home_notif_path("accept")  , method: "post" , :id => "bbc" , :class => "hide-button" , :remote => true  do %>
+            <button style="background-color: green; padding: 8px 16px; border-radius: 4px;">Accept</button>&nbsp;&nbsp;&nbsp;
+            <% end %>
+          </div>
+
+          <div class="wrapper">
+            <%= link_to home_notif_path("reject") , method: "post" , :id => "bcd" , :class => "hide-button" , :remote => true  do %>
+            <button style="background-color: red; padding: 8px 16px; border-radius: 4px;">Reject</button>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h2 class="modal-title">Request user</h2>
-        <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
-      </div>
-
-      <div class="modal-body">
-        <h4>User is yet to respond to your request</h4>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Messages Section -->
-
+<span id="userinfo" style="display: none"><%= session[:query]  %> </span>
   <div id="messages">
     <% @messages.each do |msg| %>
-  <%= msg.content %> <br/><br/>
+    <% if msg.user != session[:user] %> 
+         <section class='sent msg'><section class='msg-box-send'>    <%= msg.content %> </section></section>
+
+    <% else %>
+    <section class='reci message'><section class='msg-box-rec'> <%= msg.content %> </section></section>
+
+    <% end %>
+
   <% end %>
-      <div class="messages-content" id = "scrolldown"></div>
   </div>
 
 <!-- Bottom Bar -->
@@ -427,7 +442,10 @@ body{
     <button class="rec">
       <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>  
     </button>
-<%= f.submit %>  <i class="fa fa-telegram fa-2x" aria-hidden="true"></i> 
+    <%= button_tag do %>
+ <i class="fa fa-telegram fa-2x" aria-hidden="true"></i> 
+<% end %>
+ 
 <% end %>
 
     
@@ -572,4 +590,3 @@ function setResponse(val) {
 // }
 
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

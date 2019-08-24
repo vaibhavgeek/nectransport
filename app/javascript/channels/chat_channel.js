@@ -12,9 +12,48 @@ consumer.subscriptions.create("ChatChannel", {
   },
 
   received(data) {
-  	$("#messages").append(data.content + "<br/><br/>");	
-  	$("#message_content").val(" ");
-  	console.log(data);
-    // Called when there's incoming data on the websocket for this channel
+    if(data.content == "1" /* request_recieved */){
+
+      $('#myModal').modal('toggle');
+       if($("#userinfo").text().trim() == data.userid)
+       {
+        $("#myinfo").show();
+        $("#yourinfo").hide();
+       }
+       else
+       {
+        $("#myinfo").hide();
+        $("#yourinfo").show();
+       }
+
+    }
+    else if (data.content == "2" /* accept */) {
+      $('#myModal').modal('toggle');
+      $('#abc').hide();
+      $('#fname').textContent = "Vaibhav Maheshwari";
+      alert("You are connected!");
+    }
+    else if (data.content == "3" /* reject */) {
+        $('#myModal').modal('toggle');
+      alert("Request rejected!");
+    }
+    // else if (data.content == "4" /* close both */)
+    // {
+    //   $('#myModal').modal('toggle');
+    // }
+    else {
+      if($("#userinfo").text().trim() != data.userid)
+      {
+          $("#messages").append("<section class='reci message'><section class='msg-box-rec'>"+ data.content +" </section></section>");
+      }
+      else
+      {
+          $("#messages").append("<section class='sent msg'><section class='msg-box-send'> "+ data.content +" </section></section>");
+      }
+      $('#messages').scrollTop($('#messages')[0].scrollHeight);
+      $("#message_content").val(" ");
+    	//console.log(data);
+      // Called when there's incoming data on the websocket for this channel
+    } 
   }
 });
