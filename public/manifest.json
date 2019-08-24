@@ -1,0 +1,24 @@
+{
+  "name": "OnMyWay",
+  "short_name": "OMW",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A testing app by Ujjwal.",
+  "icons": [{
+    "src": "binoculars.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }, {
+    "src": "binoculars_192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.spinaxon.omw"
+    }
+  ]
+}
