@@ -1,2 +1,92 @@
-<h1>Home#login</h1>
-<p>Find me in app/views/home/login.html.erb</p>
+<style type="text/css">
+	body{
+		font-family: 'Quattrocento Sans', sans-serif;
+		background: url('/backg.jpg');
+		background-size: 100% 100vh; 
+		/*background-position: 50px 100px;*/
+	}
+	.heading{
+		justify-content: center;
+		background-color: none;	/*BCABAE*/
+		box-shadow: 1px 2px 3px white;
+		border-bottom:2px solid #716969; 
+		padding-top:2%;
+		font-weight: bold;
+		color: #402A2C;
+
+	}
+	.signup{
+		float: right;
+		 top: 0;
+		 padding-bottom: 4%;
+	}
+	.card {
+        margin: 0 auto; 
+        float: none; 
+        margin-bottom: 10px;
+        margin-top:10%;
+        width:80%;
+        border-radius: 10px;
+        opacity: 0.8; 
+	}
+
+	@media (min-width : 700px){
+		.card{
+			margin-top: 10%;
+		}
+	}
+
+	.row .col-6{
+		border: 0.5px solid teal;
+		/*border-radius: 10px;*/
+	}
+	.card {
+        margin: 0 auto; 
+        float: none; 
+        margin-bottom: 10px;
+        margin-top:10%;
+        width:80%;
+        border-radius: 10px;
+        opacity: 0.8; 
+	}
+</style>
+
+<div class="container-fluid">	
+		<div class="row heading">
+			<div class="col">
+				<br>
+				<h3>User Profile</h3>
+			</div>
+			<div class="col align-self-end" style="float: right;">
+				<!-- <a href="#" class="signup">SignUp</a> -->
+			</div>
+		</div>
+
+		<br>
+		<div class="container-fluid card">
+			<br>
+			<div class="container">
+				<center><img src="/dp.png" height="30%" width="30%"></center>
+			</div>
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-6"><h3>Name </h3></div>
+					<div class="col-6"><h3>Ujjwal</h3></div>
+				</div>
+				<div class="row">
+					<div class="col-6"><h3>Phone  </h3></div>
+					<div class="col-6"><h3>9876543298</h3></div>
+				</div>
+				<div class="row">
+					<div class="col-6"><h3>Address  </h3></div>
+					<div class="col-6"><h3>SVNIT Campus, Surat</h3></div>
+				</div>
+				<div class="row">
+					<div class="col-6"><h3>Interests  </h3></div>
+					<div class="col-6"><h3>Politics,<br>Cricket,<br>Football</h3></div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
