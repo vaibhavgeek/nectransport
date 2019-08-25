@@ -5,9 +5,18 @@
 
 
 <script>
-$(window).load(function(){
-	document.getElementById("loading").style.display="hidden";
-});
+
+function autoupdate(){
+		document.getElementById("loading").remove();
+}
+
+(function() {
+   // your page initialization code here
+   // the DOM will be available here
+	setTimeout(autoupdate,1000);
+
+})();
+
 </script>
 																																																																																																																																																																																																																																																																																																																																																																																																																																	
 <style type="text/css">
@@ -32,9 +41,10 @@ body {
 }
 
 #loading-image {
-  position: absolute;
+/*  position: absolute;
   top: 100px;
-  left: 240px;
+  left: 240px;*/
+  margin: 50% 0%;
   z-index: 100;
 }
 .messagebtn{

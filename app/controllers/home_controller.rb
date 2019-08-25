@@ -12,16 +12,15 @@ class HomeController < ApplicationController
   end
 
     def otp
-=begin    
     account_sid = 'AC183e333499475144942f217d1ae9f611'
   auth_token = 'a545f953327498f11e13150b46290bb3'
   @client = Twilio::REST::Client.new(account_sid, auth_token)
   message = @client.messages.create(
                              from: '14194696424',
                              body: "Your OTP is" + rand(10 ** 4).to_s,
-                             to: '+917990760364'
+                             to: '+919784072317'
                            )
-=end
+
   end
 
   def chat
