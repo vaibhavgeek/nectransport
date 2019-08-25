@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
 		@message.user = session[:query]  
 		
 		if @message.save
-			ActionCable.server.broadcast 'room_channel', content: @message.content , userid: session[:query]
+			ActionCable.server.broadcast 'room_channel', content: @message.content , userid: session[:query] , name: session[:name]
 		end 
 	end 
 

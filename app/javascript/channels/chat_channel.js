@@ -14,7 +14,7 @@ consumer.subscriptions.create("ChatChannel", {
   received(data) {
     if(data.content == "1" /* request_recieved */){
 
-      $('#myModal').modal('toggle');
+      $('#myModal').modal('show');
        if($("#userinfo").text().trim() == data.userid)
        {
         $("#myinfo").show();
@@ -28,14 +28,30 @@ consumer.subscriptions.create("ChatChannel", {
 
     }
     else if (data.content == "2" /* accept */) {
-      $('#myModal').modal('toggle');
+      $('#myModal').modal('hide');
       $('#abc').hide();
-      $('#fname').textContent = "Vaibhav Maheshwari";
-      alert("You are connected!");
+      var nname = data.name;
+      if($("#userinfo").text().trim() == data.userid)
+      {
+        $("#route").text("Route: Hauz Khauz to MG Road")
+        $("#timing").text("Time: 10:00am Boarding");
+
+        nname = "Ujjawal Kumar"
+      }
+      else
+      {
+        $("#route").text("Route: IGI Airport to MG Road")
+        $("#timing").text("Time: 10:10am Boarding");
+
+      }
+       $('#contactInfo').modal('show');
+      $('#fname').text(nname);
+      //alert("You are connected!");
     }
     else if (data.content == "3" /* reject */) {
-        $('#myModal').modal('toggle');
-      alert("Request rejected!");
+        $('#myModal').modal('hide');
+         $('#contactInfo').modal('hide');
+     // alert("Request rejected!");
     }
     // else if (data.content == "4" /* close both */)
     // {

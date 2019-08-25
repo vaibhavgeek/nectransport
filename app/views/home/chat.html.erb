@@ -369,7 +369,7 @@ body{
 <div class = "top-bar">
   <!-- <div class="btn btn-lg" onclick="document.getElementById('abc').click()">REQ</div> -->
   <div>
-    <h3 id="fname" style="display: inline;">Vaibhav</h3>
+    <h3 id="fname" class="fname" style="display: inline;">Vaibhav</h3>
     <%= link_to home_notif_path("send")  , method: "post" , :id => "abc" , :class => "hide-button" , :remote => true  do %>
     <i class="contact-info fa fa-info-circle"></i>
     <% end %>
@@ -415,6 +415,32 @@ body{
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="contactInfo">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h2 class="modal-title">OnMyWay Mate!</h2>
+        <div class="wrapper">
+          <%= link_to home_notif_path("reject") , method: "post" , :id => "def" , :class => "hide-button" , :remote => true  do %>
+        <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div id="myinfo">
+          <h4 id="route">Route: Hauz Khauz to MG Road </h4>
+          <h4 id="timing"> Time: 10:00am Boarding </h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 <!-- Messages Section -->
