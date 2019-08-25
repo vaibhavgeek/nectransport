@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/chat'
   get 'home/notify'
   get 'home/index'
+  post 'home/otp'
   root 'home#index'
   resources :messages, only: [:new , :create] 
   post 'home/notif'

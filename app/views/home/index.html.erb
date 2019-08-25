@@ -56,10 +56,11 @@
   <div class="card-body">
     <input type="number" class="form-control" placeholder="Phone" aria-label="Recipient's phone" aria-describedby="button-addon3">
     <br>
-    <div id = "otpbtn" class="btn btn-md btn-primary" onclick="document.getElementById('otparea1').style.display= 'block';document.getElementById('otparea2').style.display= 'block'; document.getElementById('otpbtn').style.display = 'none'">Get OTP</div>
+    <%= link_to "Get OTP" , home_otp_path , method: "post" , remote: true , :class =>  "btn btn-md btn-primary" , :id => "otpbtn" %> 
     <br>
     <input id = "otparea1" style = "display: none;" type="number" class="form-control" placeholder="otp" aria-label="Recipient's otp" aria-describedby="button-addon3">
     <br>
+    <%= login_to "Login" %>
     <a href="#" style="display: none;" id="otparea2" class="btn btn-primary btn-lg">Login</a>
     <!-- <a href="#" class="btn btn-primary btn-lg">SignUp</a> -->
     <br>
