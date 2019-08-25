@@ -365,6 +365,10 @@ body{
   </style>
 <!-- jQuery -->
 
+<audio id="myAudio">
+  <source src="/buzz.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 <!-- Bootstrap 4 (CDN) -->
 
@@ -381,6 +385,12 @@ body{
     <%= link_to home_notif_path("send")  , method: "post" , :id => "abc" , :class => "hide-button" , :remote => true  do %>
     <i class="contact-info fa fa-info-circle" style="color: #54aece;"></i>
     <% end %>
+
+   
+<%= link_to home_play_path , method: "post" , :id => "playlink" , remote: :true , :style => "display:none;" do %>
+     <i class="contact-info fa fa-play" style="color: #54aece;"></i>
+     <% end %>
+
   </div>
   
 </div>
@@ -586,6 +596,9 @@ function setResponse(val) {
     boxBody.scrollTop =  boxBody.scrollHeight;
   document.querySelector('#messages').scrollTo(0, document.querySelector('section:last-child').scrollHeight);
 }
+
+
+
 
 // var recognition;
 // function startRecognition() {

@@ -2,6 +2,7 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("ChatChannel", {
   connected() {
+   
   	console.log("I am connected to the channel");
   	    // Called when the subscription is ready for use on the server
   },
@@ -27,9 +28,15 @@ consumer.subscriptions.create("ChatChannel", {
        }
 
     }
+    else if(data.content == "pp")
+    {
+       var x = document.getElementById("myAudio"); 
+       x.play(); 
+    }
     else if (data.content == "2" /* accept */) {
       $('#myModal').modal('hide');
       $('#abc').hide();
+      $("#playlink").show();
       var nname = data.name;
       if($("#userinfo").text().trim() == data.userid)
       {
@@ -73,3 +80,7 @@ consumer.subscriptions.create("ChatChannel", {
     } 
   }
 });
+
+
+
+alert("hi");
