@@ -1,4 +1,15 @@
 <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
+<div id="loading">
+  <img id="loading-image" src="/loader.gif" alt="Loading..." />
+</div>
+
+
+<script>
+$(window).load(function(){
+	document.getElementById("loading").style.display="hidden";
+});
+</script>
+																																																																																																																																																																																																																																																																																																																																																																																																																																	
 <style type="text/css">
 body {
 	height: 100vh;
@@ -6,6 +17,25 @@ body {
 	background-image: url('/backg.jpg');
 	background-size: 100% 100vh; 
 	padding: 50px;
+}
+#loading {
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 99;
+   text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  top: 100px;
+  left: 240px;
+  z-index: 100;
 }
 .messagebtn{
 	height: 30px;
@@ -121,8 +151,8 @@ img{
 	<div class="container-fluid" id = "card">
 		<div class="row">
 			<div class="col-4">
-				<img src="/profile.jpg" class="profileimg" onclick="window.location.assign('/home/login/?q=Ujjwal')"><br>
-				<img src="/msg.png" class="messagebtn" onclick="window.location.assign('/home/chat/?q=Ujjwal')">
+				<img src="/profile.jpg" class="profileimg" onclick="window.location.assign('/home/login/?q=Ujjwal&int=football,politics,cricket')"><br>
+				<img src="/msg.png" class="messagebtn" onclick="window.location.assign('/home/chat/?q=Ujjwal&n=ujjwalkumar')">
 			</div>
 			<div class="col-7">
 				<b>Ujjwal</b><br>
@@ -137,8 +167,8 @@ img{
 	<div class="container-fluid" id = "card">
 		<div class="row">
 			<div class="col-4">
-				<img src="/profile.jpg" class="profileimg" onclick="window.location.assign('/home/login/?q=Vaibhav')">
-				<img src="/msg.png" class="messagebtn" onclick="window.location.assign('/home/chat/?q=Vaibhav')">
+				<img src="/profile.jpg" class="profileimg" onclick="window.location.assign('/home/login/?q=Vaibhav&int=dating,cricket,gaming')">
+				<img src="/msg.png" class="messagebtn" onclick="window.location.assign('/home/chat/?q=Vaibhav&n=vaibhavmaheshwari')">
 			</div>
 			<div class="col-7">
 				<b>Vaibhav</b><br>
@@ -153,8 +183,8 @@ img{
 	<div class="container-fluid" id = "card">
 		<div class="row">
 			<div class="col-4">
-				<img src="/profile.jpg" class="profileimg" onclick="window.location.assign('/home/login/?q=Jay')">
-				<img src="/msg.png" class="messagebtn" onclick="window.location.assign('/home/chat/?q=Jay')">
+				<img src="/profile.jpg" class="profileimg" onclick="window.location.assign('/home/login/?q=Jay&int=gaming,dating,football')">
+				<img src="/msg.png" class="messagebtn" onclick="window.location.assign('/home/chat/?q=Jay&n=jayrathod')">
 			</div>
 			<div class="col-7">
 				<b>Jay</b><br>
