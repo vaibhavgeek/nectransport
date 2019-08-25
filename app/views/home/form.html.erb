@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="card text-center">
   <!-- <h5 class="card-header">Welcome aboard!</h5> -->
-  <div class="btn btn-sm btn-primary">Autofill previous data</div><br>
+  <div class="btn btn-sm btn-primary" onclick="autofill()">Autofill previous data</div><br>
   <div class="card-body">  	
 <div class="d-flex">
 	<div class="container">
@@ -136,7 +136,23 @@
 $(document).ready(function() {
 $('.mdb-select').materialSelect();
 });
+
+function autofill() {
+  var list = document.getElementsByClassName('dropdown-menu');
+  list[0].children[2].click();
+  list[1].children[1].click();
+  document.getElementById("appt-time").value = "08:55";
+  document.getElementsByClassName('mdb-select')[0].children[0].selected = false;
+  document.getElementsByClassName('mdb-select')[0].children[1].selected = false;
+  document.getElementsByClassName('mdb-select')[0].children[2].selected = false;
+  document.getElementsByClassName('mdb-select')[0].children[3].selected = true;
+  document.getElementsByClassName('mdb-select')[0].children[4].selected = false;
+  document.getElementsByClassName('mdb-select')[0].children[5].selected = true;
+  document.getElementById('inlineRadio1').checked = true;
+}
+
 </script>
+
 
 <!-- <script type="text/javascript">
 	 $(function(){
