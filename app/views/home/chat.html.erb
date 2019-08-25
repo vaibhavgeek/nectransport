@@ -24,7 +24,7 @@ body{
   height: 10%;
   top: -5%;
   left: 0;
-  background: #4500C5;
+  background: #96D4EB; /*4500C5*/
   box-shadow: 1px 1px 10px #CDCDCD;
   font-size: 120%;
   text-align: center;
@@ -35,7 +35,7 @@ body{
 }
 .wrapper{
   display: inline-block;
-  background: #4500C5;
+  /*background: #4500C5;*/
   color: white;
   float: right;
   border: none;
@@ -50,7 +50,7 @@ body{
 }
 
 .modal-header {
-  background:#4500C5; 
+  background:#96D4EB; 
   color:white; 
 }
 .sender {
@@ -72,7 +72,7 @@ body{
   height: 10%;
   bottom: 0;
   left: 0;
-  background: #4500C5;
+  background: #96D4EB;
 }
 
 .fa-microphone {
@@ -93,7 +93,12 @@ body{
 .fa-telegram:active { 
     color: white;
 }
-
+/*#bbc{
+  background: white;
+  }
+#bdc{
+  background: white;
+}*/
 .rec{
   position: relative;
   margin: auto;
@@ -116,10 +121,11 @@ body{
   margin: auto;
   float: right;
   display: block;
-  top: 35%;
-  right: 4%;
+  top: 25px;
+  right: 3%;
   background: none;
   border:none;
+  /*bottom: 0;*/
   transform: scale(1.5);
   margin-left: 0px;
 }
@@ -215,7 +221,7 @@ body{
   padding:8px 10px;
   margin: 0px 10px;
   font-size:120%;
-  background-color:#4500C5;
+  background-color:#62bddb;
   color: white;
   height: 80%;
   width: 45%;
@@ -223,6 +229,7 @@ body{
   font-weight:300;
   border-radius:10px 10px 0px;
   display:inline-block;
+  margin-bottom: 6px;
 }
 
 .msg-box-rec{
@@ -238,6 +245,7 @@ body{
   font-weight:300;
   border-radius:10px 10px 10px 0px;
   display:inline-block;
+  margin-bottom: 6px;
 }
 
 .sent{
@@ -371,7 +379,7 @@ body{
   <div>
     <h3 id="fname" class="fname" style="display: inline;">Vaibhav</h3>
     <%= link_to home_notif_path("send")  , method: "post" , :id => "abc" , :class => "hide-button" , :remote => true  do %>
-    <i class="contact-info fa fa-info-circle"></i>
+    <i class="contact-info fa fa-info-circle" style="color: #54aece;"></i>
     <% end %>
   </div>
   
@@ -401,13 +409,13 @@ body{
           
           <div class="wrapper">
             <%= link_to home_notif_path("accept")  , method: "post" , :id => "bbc" , :class => "hide-button" , :remote => true  do %>
-            <button style="background-color: green; padding: 8px 16px; border-radius: 4px;">Accept</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-success">Accept</button>&nbsp;&nbsp;&nbsp;
             <% end %>
           </div>
 
           <div class="wrapper">
             <%= link_to home_notif_path("reject") , method: "post" , :id => "bcd" , :class => "hide-button" , :remote => true  do %>
-            <button style="background-color: red; padding: 8px 16px; border-radius: 4px;">Reject</button>
+            <button class="btn btn-danger" style="margin-right: 5px;">Reject</button>
             <% end %>
           </div>
         </div>
@@ -463,12 +471,12 @@ body{
   
 <%= form_for @message, remote:true do |f| %>
 
-<%= f.text_field :content , :id => "message_content" %>
+<%= f.text_field :content , :id => "message_content" , :class => "input"%>
 
     <button class="rec">
       <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>  
     </button>
-    <%= button_tag do %>
+    <%= button_tag :class => "send" do %>
  <i class="fa fa-telegram fa-2x" aria-hidden="true"></i> 
 <% end %>
  
