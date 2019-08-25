@@ -369,7 +369,7 @@ body{
 <div class = "top-bar">
   <!-- <div class="btn btn-lg" onclick="document.getElementById('abc').click()">REQ</div> -->
   <div>
-    <h3 id="fname" class="fname" style="display: inline;">Vaibhav</h3>
+    <h3 id="fname" class="fname" style="display: inline;"><%= params[:q] %></h3>
     <%= link_to home_notif_path("send")  , method: "post" , :id => "abc" , :class => "hide-button" , :remote => true  do %>
     <i class="contact-info fa fa-info-circle"></i>
     <% end %>
